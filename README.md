@@ -1,4 +1,4 @@
-![Alfred Confluence Workflow](https://github.com/skleinei/alfred-confluence/raw/master/assets/banner.png)
+![Alfred Confluence Workflow](https://github.com/skleinei/alfred-confluence/raw/master/design/banner.png)
 
 
 # Alfred Confluence Workflow
@@ -74,7 +74,7 @@ $ make all
 In order to release a new version:
 
 1. Bump the version numbers (semantic version numbering!) in both files:
-   * `Info.plist` (at the very end of the file)
+   * `Info.plist` (2x: at the very end of the file AND line ~110 (for the workflow name))
    * `alfred-confluence.py` (line ~15)
 2. Commit all changes.
 3. Create a release on [Github](https://help.github.com/categories/releases/)

@@ -12,7 +12,7 @@ PROP_BASEURL = 'confluence_baseUrl'
 PROP_USERNAME = 'confluence_username'
 PROP_PASSWORD = 'confluence_password'
 
-VERSION = '1.0.0'
+VERSION = '1.0.1'
 
 
 def getConfluenceBaseUrl():
