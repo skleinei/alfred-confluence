@@ -10,7 +10,9 @@ log = None
 
 PROP_BASEURL = 'confluence_baseUrl'
 PROP_USERNAME = 'confluence_username'
-PROP_PASSWORD = 'confluence_password' 
+PROP_PASSWORD = 'confluence_password'
+
+VERSION = '1.0.0'
 
 
 def getConfluenceBaseUrl():
@@ -140,7 +142,17 @@ def getBaseUrlWithoutPath(baseUrl):
 
 
 if __name__ == u'__main__':
-    wf = Workflow()
+    wf = Workflow(update_settings={
+        'github_slug': 'skleinei/alfred-confluence',
+        'version': VERSION
+        })
     htmlParser = HTMLParser()
     log = wf.logger
     sys.exit(wf.run(main))
+
+    if wf.update_available:
+    # Add a notification to top of Script Filter results
+    wf.add_item('New version available',
+                'Action this item to install the update',
+                autocomplete='workflow:update',
+                icon=ICON_INFO)
