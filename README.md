@@ -1,4 +1,4 @@
-![Alfred Confluence Workflow](https://github.com/skleinei/alfred-confluence/raw/master/assets/banner.png)!
+![Alfred Confluence Workflow](https://github.com/skleinei/alfred-confluence/raw/master/assets/banner.png)
 
 
 # Alfred Confluence Workflow
