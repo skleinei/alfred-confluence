@@ -3,7 +3,7 @@
 
 # Alfred Confluence Workflow
 
-The *Alfred Confluence Workflow* makes the Confluence Quick in the Alfred App.
+The Alfred Confluence workflow makes the Confluence Quick search available in the Alfred App.
   
 Just hit `⌘ Space` and type `c Employee Records` to search for Confluence page. 
 
@@ -38,23 +38,23 @@ In order to search multiple Confluence systems:
    ```[
      {
        "key": "wkc",
-       "name": "www.k15t.com",
+       "prefix": "[wkc] ",
        "baseUrl" : "https://www.k15t.com",
-       "username" : "stefan",
+       "username" : "your-username",
        "password" : "your-unencrypted-password"
      },
      {
        "key": "cl",
-       "name": "Cloud",
+       "prefix": "[Cloud] ",
        "baseUrl" : "https://k15t.jira.com/wiki",
-       "username" : "stefan",
+       "username" : "your-username",
        "password" : "your-unencrypted-password"
      }
    ]
    ```
 2. Use the following commands to search in the default
    * `c <search-query>` – search in the default system for pages `<search-query>`
-   * `c <system-key> <search-query>` – search in the system with key <system-key>
+   * `c <key> <search-query>` – search in the system with `<key>` for pages `<search-query>`
 
 Please be aware that this will store you password in clear text on your file system.
 

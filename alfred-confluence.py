@@ -110,7 +110,7 @@ def main(wf):
                     
 
                 wf.add_item(title=htmlParser.unescape(content['name']), 
-                    subtitle=config['name'] + subtitle,
+                    subtitle=config['prefix'] + subtitle,
                     arg=getBaseUrlWithoutPath(config['baseUrl']) + content['href'],
                     valid=True,
                     icon='assets/' + content['className'] + '.png')
@@ -151,8 +151,8 @@ if __name__ == u'__main__':
     sys.exit(wf.run(main))
 
     if wf.update_available:
-    # Add a notification to top of Script Filter results
-    wf.add_item('New version available',
-                'Action this item to install the update',
-                autocomplete='workflow:update',
-                icon=ICON_INFO)
+        # Add a notification to top of Script Filter results
+        wf.add_item('New version available',
+                    'Action this item to install the update',
+                    autocomplete='workflow:update',
+                    icon=ICON_INFO)
