@@ -1,0 +1,146 @@
+import argparse
+import json
+import sys
+from HTMLParser import HTMLParser
+from lib.workflow import Workflow, web, PasswordNotFound
+from os.path import expanduser
+from urlparse import urlparse
+
+log = None
+
+PROP_BASEURL = 'confluence_baseUrl'
+PROP_USERNAME = 'confluence_username'
+PROP_PASSWORD = 'confluence_password' 
+
+
+def getConfluenceBaseUrl():
+    if wf.settings.get(PROP_BASEURL):
+        return wf.settings[PROP_BASEURL]
+    else:
+        wf.add_item(title='No Confluence Base URL set. Please run confluence_baseurl', valid=False)
+        wf.send_feedback()
+        return 0
+
+
+def getConfluenceUsername():
+    if wf.settings.get(PROP_USERNAME):
+        return wf.settings[PROP_USERNAME]
+    else:
+        wf.add_item(title='No Confluence Username set. Please run confluence_username', valid=False)
+        wf.send_feedback()
+        return 0
+
+
+def getConfluencePassword():
+    try:
+        return wf.get_password(PROP_PASSWORD)
+    except PasswordNotFound:
+        wf.add_item(title='No Confluence Password set. Please run confluence_password', valid=False)
+        wf.send_feedback()
+        return 0
+
+
+def main(wf):
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--baseUrl', dest='baseUrl', nargs='?', default=None)
+    parser.add_argument('--username', dest='username', nargs='?', default=None)
+    parser.add_argument('--password', dest='password', nargs='?', default=None)
+    parser.add_argument('query', nargs='?', default=None)
+    args = parser.parse_args(wf.args)
+
+
+    if args.baseUrl:
+        wf.settings[PROP_BASEURL] = args.baseUrl
+        return 0
+
+    if args.username:
+        wf.settings[PROP_USERNAME] = args.username
+        return 0
+
+    if args.password:
+        wf.save_password(PROP_PASSWORD, args.password)
+        return 0  
+
+    try:
+        # lookup config for system
+        args = wf.args[0].split()
+        config = findConfig(args)
+
+        if config.get('isFallback') is None:
+            query = ' '.join(args[1:])
+        else:
+            query = ' '.join(args)
+
+    except:
+        query = wf.args[0]
+        config = dict(
+            baseUrl=getConfluenceBaseUrl(),
+            name='',
+            username=getConfluenceUsername(),
+            password=getConfluencePassword()
+            )
+
+    # query Confluence
+    url = config['baseUrl'] + '/rest/quicknav/1/search?os_authType=basic&query=%s' % query
+    
+    log.debug('Quick Search URL: ' + url)
+
+    r = web.get(url, params=dict(query=query), auth=(config['username'], config['password']))
+
+    # throw an error if request failed
+    # Workflow will catch this and show it to the user
+    r.raise_for_status()
+
+    # Parse the JSON returned by pinboard and extract the posts
+    result = r.json()
+    contentGroups = result['contentNameMatches']
+
+    # Loop through the returned posts and add an item for each to
+    # the list of results for Alfred
+    for contentGroup in contentGroups:
+        for content in contentGroup:
+            # filter results to only contain pages and blog posts (and search site link)
+            if content['className'] in ['content-type-page', 'content-type-blogpost', 'search-for']:
+                if (content.get('spaceName')):
+                    subtitle = content['spaceName']
+                else:
+                    subtitle = 'Use full Confluence Search'
+                    
+
+                wf.add_item(title=htmlParser.unescape(content['name']), 
+                    subtitle=config['name'] + subtitle,
+                    arg=getBaseUrlWithoutPath(config['baseUrl']) + content['href'],
+                    valid=True,
+                    icon='assets/' + content['className'] + '.png')
+
+    # Send the results to Alfred as XML
+    wf.send_feedback()
+
+
+def findConfig(args): 
+    homeDir = expanduser('~')
+    with open(homeDir + '/.alfred-confluence.json') as configFile:    
+        configs = json.load(configFile)
+
+    
+    if len(args) > 1:
+        for config in configs:
+            if args[0].lower() == config['key'].lower():
+                return config
+    
+    # Fallback to first entry
+    configs[0]['isFallback'] = True
+    return configs[0]
+
+
+def getBaseUrlWithoutPath(baseUrl):
+    parsedBaseUrl = urlparse(baseUrl)
+    baseUrlWithoutPath = parsedBaseUrl.scheme + '://' + parsedBaseUrl.hostname
+    return baseUrlWithoutPath
+
+
+if __name__ == u'__main__':
+    wf = Workflow()
+    htmlParser = HTMLParser()
+    log = wf.logger
+    sys.exit(wf.run(main))
