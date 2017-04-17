@@ -178,9 +178,9 @@
 				<key>argumenttype</key>
 				<integer>0</integer>
 				<key>keyword</key>
-				<string>confluence-baseurl</string>
+				<string>confluence_baseurl</string>
 				<key>subtext</key>
-				<string>E.g. confluence-baseurl https://acme.atlassian.net/wiki</string>
+				<string>E.g. confluence_baseurl https://acme.atlassian.net/wiki</string>
 				<key>text</key>
 				<string>Set Confluence Base URL</string>
 				<key>withspace</key>
@@ -287,9 +287,9 @@
 				<key>argumenttype</key>
 				<integer>0</integer>
 				<key>keyword</key>
-				<string>confluence-username</string>
+				<string>confluence_username</string>
 				<key>subtext</key>
-				<string>E.g. confluence-username peter</string>
+				<string>E.g. confluence_username stefan</string>
 				<key>text</key>
 				<string>Set Confluence Username</string>
 				<key>withspace</key>
@@ -352,9 +352,9 @@
 				<key>argumenttype</key>
 				<integer>0</integer>
 				<key>keyword</key>
-				<string>confluence-password</string>
+				<string>confluence_password</string>
 				<key>subtext</key>
-				<string>E.g. confluence-baseurl ******</string>
+				<string>E.g. confluence_password ******</string>
 				<key>text</key>
 				<string>Set Confluence Password</string>
 				<key>withspace</key>

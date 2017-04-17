@@ -19,7 +19,10 @@ def getConfluenceBaseUrl():
     if wf.settings.get(PROP_BASEURL):
         return wf.settings[PROP_BASEURL]
     else:
-        wf.add_item(title='No Confluence Base URL set. Please run confluence_baseurl', valid=False)
+        wf.add_item(title='No Confluence Base URL set.', 
+            subtitle='Type confluence_baseurl <baseUrl> and hit enter.',
+            valid=False
+            )
         wf.send_feedback()
         return 0
 
@@ -28,7 +31,11 @@ def getConfluenceUsername():
     if wf.settings.get(PROP_USERNAME):
         return wf.settings[PROP_USERNAME]
     else:
-        wf.add_item(title='No Confluence Username set. Please run confluence_username', valid=False)
+        wf.add_item(
+            title='No Confluence Username set. Please run confluence_username', 
+            subtitle='Type confluence_username <username> and hit enter.',
+            valid=False
+            )
         wf.send_feedback()
         return 0
 
@@ -37,7 +44,11 @@ def getConfluencePassword():
     try:
         return wf.get_password(PROP_PASSWORD)
     except PasswordNotFound:
-        wf.add_item(title='No Confluence Password set. Please run confluence_password', valid=False)
+        wf.add_item(
+            title='No Confluence Password set. Please run confluence_password', 
+            subtitle='Type confluence_password <password> and hit enter.',
+            valid=False
+            )
         wf.send_feedback()
         return 0
 
@@ -77,7 +88,7 @@ def main(wf):
         query = wf.args[0]
         config = dict(
             baseUrl=getConfluenceBaseUrl(),
-            name='',
+            prefix='',
             username=getConfluenceUsername(),
             password=getConfluencePassword()
             )
