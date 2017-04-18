@@ -12,7 +12,7 @@ Just hit `⌘ Space` and type `c search term` to search for Confluence page.
 
 ## Getting Started
 
-In order to get started
+In order to get started:
 
 1. Download the latest version of Alfred Confluence from the [Github releases page](https://github.com/skleinei/alfred-confluence/releases).
    * Click on the release you want to download.
@@ -79,9 +79,11 @@ $ make all
 
 In order to release a new version:
 
-1. Bump the version numbers (semantic version numbering!) in both files:
-   * `Info.plist` (2x: at the very end of the file AND line ~110 (for the workflow name))
-   * `alfred-confluence.py` (line ~15)
+1. Bump the version numbers (semantic version numbering!) in these files:
+   * `src/Info.plist` (2x: at the very end of the file AND line ~110 (for the workflow name))
+   * `src/alfred-confluence.py` (line ~15)
+   * `version`
+   * `src/version`
 2. Commit all changes.
 3. Create a release on [Github](https://help.github.com/categories/releases/)
    and use the same version number.

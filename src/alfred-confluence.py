@@ -2,7 +2,7 @@ import argparse
 import json
 import sys
 from HTMLParser import HTMLParser
-from lib.workflow import Workflow, web, PasswordNotFound
+from lib.workflow import Workflow, ICON_INFO, web, PasswordNotFound
 from os.path import expanduser
 from urlparse import urlparse
 
@@ -159,11 +159,12 @@ if __name__ == u'__main__':
         })
     htmlParser = HTMLParser()
     log = wf.logger
-    sys.exit(wf.run(main))
 
     if wf.update_available:
         # Add a notification to top of Script Filter results
-        wf.add_item('New version available',
-                    'Action this item to install the update',
+        wf.add_item('New version of the Alfred Confluence workflow available',
+                    'Hit enter twice to to install the update.',
                     autocomplete='workflow:update',
                     icon=ICON_INFO)
+
+    sys.exit(wf.run(main))
