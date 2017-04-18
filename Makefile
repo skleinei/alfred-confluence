@@ -1,6 +1,5 @@
 all:
-	rm -f build/alfred-confluence.alfred3workflow
+	rm -f build/alfred-confluence.alfredworkflow
 	mkdir -p build
-	cd src && zip -qR alfred-confluence.alfred3workflow "*"
-	mv src/alfred-confluence.alfred3workflow build
-
+	cd src && zip -qR alfred-confluence.alfredworkflow "*"
+	mv src/alfred-confluence.alfredworkflow build

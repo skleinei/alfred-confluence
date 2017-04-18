@@ -80,10 +80,8 @@ $ make all
 In order to release a new version:
 
 1. Bump the version numbers (semantic version numbering!) in these files:
-   * `src/Info.plist` (2x: at the very end of the file AND line ~110 (for the workflow name))
+   * `src/Info.plist` (2 times: at the very end of the file AND line ~110 (for the workflow name))
    * `src/alfred-confluence.py` (line ~15)
-   * `version`
-   * `src/version`
 2. Commit all changes.
 3. Create a release on [Github](https://help.github.com/categories/releases/)
    and use the same version number.
