@@ -3,9 +3,11 @@
 
 # Alfred Confluence Workflow
 
-Wouldn't it be nice to find and open Confluence pages without opening a browser window and search in the Confluence web user interface.
+Wouldn't it be nice to find and open Confluence pages – without opening a browser window and search in 
+the Confluence web user interface?
 
-The Alfred Confluence workflow is the solution: It makes the Confluence Quick search available from Alfred – just hit `⌘ Space` and type `c search term` to search for Confluence page.
+The Alfred Confluence workflow is the solution: It makes the Confluence Quick search available from Alfred.
+Just hit `⌘ Space` and type `c search term` to search for Confluence page.
 
 
 ## Getting Started
