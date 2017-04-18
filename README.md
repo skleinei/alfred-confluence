@@ -65,9 +65,15 @@ In order to search multiple Confluence systems:
 Please be aware that this will store you password in clear text on your file system.
 
 
-# Development
+## Feedback, Issues & Questions
 
-## Building
+Please raise any feedback issues and questions here: 
+https://www.alfredforum.com/topic/10234-atlassian-confluence-quick-search/
+
+
+## Development
+
+### Building
 
 To build Alfred Confluence just make:
 
@@ -75,7 +81,7 @@ To build Alfred Confluence just make:
 $ make all
 ```
 
-## Releasing
+### Releasing
 
 In order to release a new version:
 
@@ -87,7 +93,7 @@ In order to release a new version:
    and use the same version number.
 
 
-# Credits
+## Credits
 
 The Alfred Confluence workflow was build by Stefan Kleineikenscheidt 
 ([@skleinei](https://twitter.com/skleinei)). 
