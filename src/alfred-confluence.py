@@ -163,7 +163,7 @@ if __name__ == u'__main__':
     if wf.update_available:
         # Add a notification to top of Script Filter results
         wf.add_item('New version of the Alfred Confluence workflow available',
-                    'Hit enter twice to to install the update.',
+                    'Hit enter to to install the update.',
                     autocomplete='workflow:update',
                     icon=ICON_INFO)
 
