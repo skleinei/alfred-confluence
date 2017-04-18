@@ -3,14 +3,18 @@
 
 # Alfred Confluence Workflow
 
-The Alfred Confluence workflow makes the Confluence Quick search available in the Alfred App.
-  
-Just hit `⌘ Space` and type `c Employee Records` to search for Confluence page. 
+Wouldn't it be nice to find and open Confluence pages without opening a browser window and search in the Confluence web user interface.
+
+The Alfred Confluence workflow is the solution: It makes the Confluence Quick search available from Alfred – just hit `⌘ Space` and type `c search term` to search for Confluence page.
 
 
 ## Getting Started
 
-1. Download Alfred Confluence from the Github releases page.
+In order to get started
+
+1. Download the latest version of Alfred Confluence from the [Github releases page](https://github.com/skleinei/alfred-confluence/releases).
+   * Click on the release you want to download.
+   * Download the `alfred-confluence.alfred3workflow` file.
 2. Double click to install Alfred Confluence in Alfred.
 3. Configure Alfred Confluence with the following commands
    * `confluence_baseurl` - set the Confluence Base URL, e.g. 
