@@ -148,7 +148,7 @@ def findConfig(args):
 
 def getBaseUrlWithoutPath(baseUrl):
     parsedBaseUrl = urlparse(baseUrl)
-    baseUrlWithoutPath = parsedBaseUrl.scheme + '://' + parsedBaseUrl.hostname
+    baseUrlWithoutPath = parsedBaseUrl.scheme + '://' + parsedBaseUrl.netloc
     return baseUrlWithoutPath
 
 
