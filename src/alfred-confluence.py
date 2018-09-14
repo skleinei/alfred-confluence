@@ -1,23 +1,25 @@
 import argparse
 import json
 import sys
+import logging
+from base64 import b64encode
 from HTMLParser import HTMLParser
 from lib.workflow import Workflow, ICON_INFO, web, PasswordNotFound
 from os.path import expanduser
 from urlparse import urlparse
 
-log = None
+log = logging
 
 PROP_BASEURL = 'confluence_baseUrl'
 PROP_USERNAME = 'confluence_username'
 PROP_PASSWORD = 'confluence_password'
 
-VERSION = '1.0.2'
+VERSION = '1.0.3'
 
 
 def getConfluenceBaseUrl():
     if wf.settings.get(PROP_BASEURL):
-        return wf.settings[PROP_BASEURL]
+        return wf.settings[PROP_BASEURL].strip('/')
     else:
         wf.add_item(title='No Confluence Base URL set.', 
             subtitle='Type confluence_baseurl <baseUrl> and hit enter.',
@@ -45,12 +47,34 @@ def getConfluencePassword():
         return wf.get_password(PROP_PASSWORD)
     except PasswordNotFound:
         wf.add_item(
-            title='No Confluence Password set. Please run confluence_password', 
+            title='No Confluence Password set. Please run confluence_password',
             subtitle='Type confluence_password <password> and hit enter.',
             valid=False
             )
         wf.send_feedback()
         return 0
+
+
+def checkConfig(config):
+    log.info('~~ Checking config..')
+    log.info('~~   baseUrl: ' + config['baseUrl'])
+    log.info('~~   username: ' + config['username'])
+    log.info('~~   password: ' + config['password'])
+
+    r = web.get(config['baseUrl'] + '/rest/api/user/current', headers=dict(Authorization='Basic ' + b64encode(config['username'] + ':' + config['password'])))
+
+    if not ((r.status_code == 200) and (r.json()['type'] == 'known')):
+        log.info('~~   Status code: %d', r.status_code)
+        log.info('~~   ... Failed.')
+        wf.add_item(
+            title='Authentication failed.',
+            subtitle='CAPTCHA issues? Try to logout and login again in your browser.',
+            valid=False
+        )
+        wf.send_feedback()
+        return 0
+    else:
+        log.info('~~   ... Ok.')
 
 
 def main(wf):
@@ -83,7 +107,6 @@ def main(wf):
             query = ' '.join(args[1:])
         else:
             query = ' '.join(args)
-
     except:
         query = wf.args[0]
         config = dict(
@@ -93,12 +116,12 @@ def main(wf):
             password=getConfluencePassword()
             )
 
-    # query Confluence
-    url = config['baseUrl'] + '/rest/quicknav/1/search?os_authType=basic&query=%s' % query
-    
-    log.debug('Quick Search URL: ' + url)
+    checkConfig(config)
 
-    r = web.get(url, params=dict(query=query), auth=(config['username'], config['password']))
+    # query Confluence
+    r = web.get(config['baseUrl'] + '/rest/quicknav/1/search',
+                params=dict(query=query),
+                headers=dict(Authorization='Basic ' + b64encode(config['username'] + ':' + config['password'])))
 
     # throw an error if request failed
     # Workflow will catch this and show it to the user
@@ -130,7 +153,7 @@ def main(wf):
     wf.send_feedback()
 
 
-def findConfig(args): 
+def findConfig(args):
     homeDir = expanduser('~')
     with open(homeDir + '/.alfred-confluence.json') as configFile:    
         configs = json.load(configFile)
@@ -143,13 +166,14 @@ def findConfig(args):
     
     # Fallback to first entry
     configs[0]['isFallback'] = True
+    configs[0]['baseUrl'] = configs[0]['baseUrl'].strip('/')
     return configs[0]
 
 
 def getBaseUrlWithoutPath(baseUrl):
     parsedBaseUrl = urlparse(baseUrl)
-    baseUrlWithoutPath = parsedBaseUrl.scheme + '://' + parsedBaseUrl.hostname
-    return baseUrlWithoutPath
+    baseUrlWithoutPath = parsedBaseUrl.scheme + '://' + parsedBaseUrl.netloc
+    return baseUrlWithoutPath.strip('/')
 
 
 if __name__ == u'__main__':

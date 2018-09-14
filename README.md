@@ -3,27 +3,29 @@
 
 # Alfred Confluence Workflow
 
-Wouldn't it be nice to find and open Confluence pages – without opening a browser window and search in 
-the Confluence web user interface?
-
-The Alfred Confluence workflow is the solution: It makes the Confluence Quick search available from Alfred.
-Just hit `⌘ Space` and type `c search term` to search for Confluence page.
+The Alfred Confluence Workflow allows you to search and open Confluence pages
+directly from Alfred. Just hit type `c <search term>` to search for Confluence 
+page.
 
 
 ## Getting Started
 
 In order to get started:
 
-1. Download the latest version of Alfred Confluence from the [Github releases page](https://github.com/skleinei/alfred-confluence/releases).
+1. Download the latest version of Alfred Confluence from the 
+   [Github releases page](https://github.com/skleinei/alfred-confluence/releases).
    * Click on the release you want to download.
    * Download the `alfred-confluence.alfred3workflow` file.
 2. Double click to install Alfred Confluence in Alfred.
 3. Configure Alfred Confluence with the following commands
    * `confluence_baseurl` - set the Confluence Base URL, e.g. 
      https://www.example.com/wiki or https://wiki.example.com
-   * `confluence_username` - set your Confluence usename
-   * `confluence_password` - set your Confluence password (it will be stored 
-     securely in your MacOS keychain)
+   * `confluence_username` - set your username
+   * `confluence_password` - set your password or token:
+      * Confluence Server users enter your password
+      * Confluence Cloud enter your API token 
+        ([more info](https://confluence.atlassian.com/cloud/api-tokens-938839638.html))
+        (it will be stored in your MacOS keychain)
 4. Use the `c` command to search your Confluence system. `c my search term`
 
 
@@ -45,30 +47,57 @@ In order to search multiple Confluence systems:
      {
        "key": "wkc",
        "prefix": "[wkc] ",
-       "baseUrl" : "https://www.k15t.com",
+       "baseUrl" : "https://www.example.com/wiki",
        "username" : "your-username",
        "password" : "your-unencrypted-password"
      },
      {
        "key": "cl",
        "prefix": "[Cloud] ",
-       "baseUrl" : "https://k15t.jira.com/wiki",
+       "baseUrl" : "https://example.atlassian.net/wiki",
        "username" : "your-username",
        "password" : "your-unencrypted-password"
      }
    ]
    ```
 2. Use the following commands to search in the default
-   * `c <search-query>` – search in the default system for pages `<search-query>`
-   * `c <key> <search-query>` – search in the system with `<key>` for pages `<search-query>`
+   * `c <search-query>` – search in the default system for pages
+     `<search-query>`
+   * `c <key> <search-query>` – search in the system with `<key>` for pages 
+     `<search-query>`
 
 Please be aware that this will store you password in clear text on your file system.
+
+
+## Troubleshooting
+
+### Authentication and CAPTCHA
+
+First of all, make sure you have entered the correct baseUrl, username and 
+password/token combination. To do so open Alfred's 
+[Workflow Debugger](https://www.alfredapp.com/help/workflows/advanced/debugger/), 
+where baseUrl, username and password/token are logged.
+
+If you had authentication issues, it's likely that Confluence has locked you
+out because of too many unsuccessful login attempts. In this case open your 
+browser and log in through the web interface where Confluence will display a 
+CAPTCHA. Then try again.
 
 
 ## Feedback, Issues & Questions
 
 Please raise any feedback issues and questions here: 
 https://www.alfredforum.com/topic/10234-atlassian-confluence-quick-search/
+
+
+## Releases
+
+### 1.0.3
+
+* Fixed issue with authentication Confluence Cloud instances. Authentication
+  require tokens now (see above).
+* Improved error handling for authentication issues.
+* Fixed issue with Confluence on custom ports. Thanks to @wooyeong and @Frogli.
 
 
 ## Development
