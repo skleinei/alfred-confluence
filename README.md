@@ -98,6 +98,7 @@ https://www.alfredforum.com/topic/10234-atlassian-confluence-quick-search/
   require tokens now (see above).
 * Improved error handling for authentication issues.
 * Fixed issue with Confluence on custom ports. Thanks to @wooyeong and @Frogli.
+* Trailing slashes in the confluence_baseUrl should no longer be an issue.
 
 
 ## Development
