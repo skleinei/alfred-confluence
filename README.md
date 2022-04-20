@@ -43,7 +43,8 @@ In order to search multiple Confluence systems:
    
    Example:
    
-   ```[
+   ```json
+   [
      {
        "key": "wkc",
        "prefix": "[wkc] ",
@@ -107,7 +108,7 @@ https://www.alfredforum.com/topic/10234-atlassian-confluence-quick-search/
 
 To build Alfred Confluence just make:
 
-```
+```bash
 $ make all
 ```
 
