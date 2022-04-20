@@ -151,7 +151,7 @@
 				<key>runningsubtext</key>
 				<string>Searching...</string>
 				<key>script</key>
-				<string>python alfred-confluence.py "{query}"</string>
+				<string>python3 alfred-confluence.py "{query}"</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
@@ -222,7 +222,7 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>python alfred-confluence.py --baseUrl "{query}"</string>
+				<string>python3 alfred-confluence.py --baseUrl "{query}"</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
@@ -266,7 +266,7 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>python alfred-confluence.py --username "{query}"</string>
+				<string>python3 alfred-confluence.py --username "{query}"</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
@@ -310,7 +310,7 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>python alfred-confluence.py --password "{query}"</string>
+				<string>python3 alfred-confluence.py --password "{query}"</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
@@ -373,13 +373,13 @@
 
 The Alfred Confluence workflow makes the Confluence Quick search available in the Alfred App.
 
-Just hit `⌘ Space` and type `c Employee Records` to search for Confluence page. 
+Just hit `⌘ Space` and type `c Employee Records` to search for Confluence page.
 
 
 ---
 
-The Alfred Confluence workflow was build by Stefan Kleineikenscheidt 
-(@skleinei). 
+The Alfred Confluence workflow was build by Stefan Kleineikenscheidt
+(@skleinei).
 
 ---
 
