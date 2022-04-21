@@ -1,4 +1,3 @@
-# encoding: utf-8
 #
 # Copyright (c) 2016 Dean Jackson <deanishe@deanishe.net>
 #
@@ -24,16 +23,15 @@ object won't be aware of them, and they won't be sent to Alfred when
 you call :meth:`~workflow.workflow3.Workflow3.send_feedback()`.
 """
 
-from __future__ import print_function, unicode_literals, absolute_import
 
 import json
 import os
 import sys
 
-from .workflow import Workflow
+from workflow import Workflow
 
 
-class Modifier(object):
+class Modifier:
     """Modify ``Item3`` values for when specified modifier keys are pressed.
 
     Valid modifiers (i.e. values for ``key``) are:
@@ -103,32 +101,32 @@ class Modifier(object):
         o = {}
 
         if self.subtitle is not None:
-            o['subtitle'] = self.subtitle
+            o["subtitle"] = self.subtitle
 
         if self.arg is not None:
-            o['arg'] = self.arg
+            o["arg"] = self.arg
 
         if self.valid is not None:
-            o['valid'] = self.valid
+            o["valid"] = self.valid
 
         # Variables and config
         if self.variables or self.config:
             d = {}
             if self.variables:
-                d['variables'] = self.variables
+                d["variables"] = self.variables
 
             if self.config:
-                d['config'] = self.config
+                d["config"] = self.config
 
             if self.arg is not None:
-                d['arg'] = self.arg
+                d["arg"] = self.arg
 
-            o['arg'] = json.dumps({'alfredworkflow': d})
+            o["arg"] = json.dumps({"alfredworkflow": d})
 
         return o
 
 
-class Item3(object):
+class Item3:
     """Represents a feedback item for Alfred 3.
 
     Generates Alfred-compliant JSON for a single item.
@@ -138,9 +136,21 @@ class Item3(object):
     for details of arguments.
     """
 
-    def __init__(self, title, subtitle='', arg=None, autocomplete=None,
-                 valid=False, uid=None, icon=None, icontype=None,
-                 type=None, largetext=None, copytext=None, quicklookurl=None):
+    def __init__(
+        self,
+        title,
+        subtitle="",
+        arg=None,
+        autocomplete=None,
+        valid=False,
+        uid=None,
+        icon=None,
+        icontype=None,
+        type=None,
+        largetext=None,
+        copytext=None,
+        quicklookurl=None,
+    ):
         """Use same arguments as for :meth:`Workflow.add_item`.
 
         Argument ``subtitle_modifiers`` is not supported.
@@ -214,46 +224,44 @@ class Item3(object):
             dict: Data suitable for Alfred 3 feedback.
         """
         # Basic values
-        o = {'title': self.title,
-             'subtitle': self.subtitle,
-             'valid': self.valid}
+        o = {"title": self.title, "subtitle": self.subtitle, "valid": self.valid}
 
         icon = {}
 
         # Optional values
         if self.arg is not None:
-            o['arg'] = self.arg
+            o["arg"] = self.arg
 
         if self.autocomplete is not None:
-            o['autocomplete'] = self.autocomplete
+            o["autocomplete"] = self.autocomplete
 
         if self.uid is not None:
-            o['uid'] = self.uid
+            o["uid"] = self.uid
 
         if self.type is not None:
-            o['type'] = self.type
+            o["type"] = self.type
 
         if self.quicklookurl is not None:
-            o['quicklookurl'] = self.quicklookurl
+            o["quicklookurl"] = self.quicklookurl
 
         # Largetype and copytext
         text = self._text()
         if text:
-            o['text'] = text
+            o["text"] = text
 
         icon = self._icon()
         if icon:
-            o['icon'] = icon
+            o["icon"] = icon
 
         # Variables and config
         js = self._vars_and_config()
         if js:
-            o['arg'] = js
+            o["arg"] = js
 
         # Modifiers
         mods = self._modifiers()
         if mods:
-            o['mods'] = mods
+            o["mods"] = mods
 
         return o
 
@@ -265,10 +273,10 @@ class Item3(object):
         """
         icon = {}
         if self.icon is not None:
-            icon['path'] = self.icon
+            icon["path"] = self.icon
 
         if self.icontype is not None:
-            icon['type'] = self.icontype
+            icon["type"] = self.icontype
 
         return icon
 
@@ -280,10 +288,10 @@ class Item3(object):
         """
         text = {}
         if self.largetext is not None:
-            text['largetype'] = self.largetext
+            text["largetype"] = self.largetext
 
         if self.copytext is not None:
-            text['copy'] = self.copytext
+            text["copy"] = self.copytext
 
         return text
 
@@ -296,15 +304,15 @@ class Item3(object):
         if self.variables or self.config:
             d = {}
             if self.variables:
-                d['variables'] = self.variables
+                d["variables"] = self.variables
 
             if self.config:
-                d['config'] = self.config
+                d["config"] = self.config
 
             if self.arg is not None:
-                d['arg'] = self.arg
+                d["arg"] = self.arg
 
-            return json.dumps({'alfredworkflow': d})
+            return json.dumps({"alfredworkflow": d})
 
         return None
 
@@ -348,17 +356,13 @@ class Workflow3(Workflow):
     def _default_cachedir(self):
         """Alfred 3's default cache directory."""
         return os.path.join(
-            os.path.expanduser(
-                '~/Library/Caches/com.runningwithcrayons.Alfred-3/'
-                'Workflow Data/'),
-            self.bundleid)
+            os.path.expanduser("~/Library/Caches/com.runningwithcrayons.Alfred-3/" "Workflow Data/"), self.bundleid
+        )
 
     @property
     def _default_datadir(self):
         """Alfred 3's default data directory."""
-        return os.path.join(os.path.expanduser(
-            '~/Library/Application Support/Alfred 3/Workflow Data/'),
-            self.bundleid)
+        return os.path.join(os.path.expanduser("~/Library/Application Support/Alfred 3/Workflow Data/"), self.bundleid)
 
     @property
     def rerun(self):
@@ -386,11 +390,12 @@ class Workflow3(Workflow):
 
         """
         if not self._session_id:
-            sid = os.getenv('_WF_SESSION_ID')
+            sid = os.getenv("_WF_SESSION_ID")
             if not sid:
                 from uuid import uuid4
+
                 sid = uuid4().hex
-                self.setvar('_WF_SESSION_ID', sid)
+                self.setvar("_WF_SESSION_ID", sid)
 
             self._session_id = sid
 
@@ -422,9 +427,21 @@ class Workflow3(Workflow):
         """
         return self.variables.get(name, default)
 
-    def add_item(self, title, subtitle='', arg=None, autocomplete=None,
-                 valid=False, uid=None, icon=None, icontype=None,
-                 type=None, largetext=None, copytext=None, quicklookurl=None):
+    def add_item(
+        self,
+        title,
+        subtitle="",
+        arg=None,
+        autocomplete=None,
+        valid=False,
+        uid=None,
+        icon=None,
+        icontype=None,
+        type=None,
+        largetext=None,
+        copytext=None,
+        quicklookurl=None,
+    ):
         """Add an item to be output to Alfred.
 
         See :meth:`~workflow.workflow.Workflow.add_item` for the main
@@ -437,16 +454,16 @@ class Workflow3(Workflow):
         Returns:
             Item3: Alfred feedback item.
         """
-        item = self.item_class(title, subtitle, arg,
-                               autocomplete, valid, uid, icon, icontype, type,
-                               largetext, copytext, quicklookurl)
+        item = self.item_class(
+            title, subtitle, arg, autocomplete, valid, uid, icon, icontype, type, largetext, copytext, quicklookurl
+        )
 
         self._items.append(item)
         return item
 
     def _mk_session_name(self, name):
         """New cache name/key based on session ID."""
-        return '_wfsess-{0}-{1}'.format(self.session_id, name)
+        return f"_wfsess-{self.session_id}-{name}"
 
     def cache_data(self, name, data, session=False):
         """Cache API with session-scoped expiry.
@@ -470,7 +487,7 @@ class Workflow3(Workflow):
         if session:
             name = self._mk_session_name(name)
 
-        return super(Workflow3, self).cache_data(name, data)
+        return super().cache_data(name, data)
 
     def cached_data(self, name, data_func=None, max_age=60, session=False):
         """Cache API with session-scoped expiry.
@@ -496,15 +513,16 @@ class Workflow3(Workflow):
         if session:
             name = self._mk_session_name(name)
 
-        return super(Workflow3, self).cached_data(name, data_func, max_age)
+        return super().cached_data(name, data_func, max_age)
 
     def clear_session_cache(self):
         """Remove *all* session data from the cache.
 
         .. versionadded:: 1.25
         """
+
         def _is_session_file(filename):
-            return filename.startswith('_wfsess-')
+            return filename.startswith("_wfsess-")
 
         self.clear_cache(_is_session_file)
 
@@ -519,11 +537,11 @@ class Workflow3(Workflow):
         for item in self._items:
             items.append(item.obj)
 
-        o = {'items': items}
+        o = {"items": items}
         if self.variables:
-            o['variables'] = self.variables
+            o["variables"] = self.variables
         if self.rerun:
-            o['rerun'] = self.rerun
+            o["rerun"] = self.rerun
         return o
 
     def send_feedback(self):

@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-# encoding: utf-8
 #
 # Copyright (c) 2015 deanishe@deanishe.net
 #
@@ -22,7 +21,6 @@ directory. It replaces the application's icon with your workflow's
 icon and then calls the application to post notifications.
 """
 
-from __future__ import print_function, unicode_literals
 
 import os
 import plistlib
@@ -117,7 +115,7 @@ def install_notifier():
     tgz = tarfile.open(archive, 'r:gz')
     tgz.extractall(destdir)
     assert os.path.exists(n), (
-        "Notify.app could not be installed in {0!r}.".format(destdir))
+        f"Notify.app could not be installed in {destdir!r}.")
 
     # Replace applet icon
     icon = notifier_icon_path()
@@ -142,9 +140,9 @@ def install_notifier():
 
     # Change bundle ID of installed app
     ip_path = os.path.join(app_path, 'Contents/Info.plist')
-    bundle_id = '{0}.{1}'.format(wf().bundleid, uuid.uuid4().hex)
+    bundle_id = f'{wf().bundleid}.{uuid.uuid4().hex}'
     data = plistlib.readPlist(ip_path)
-    log().debug('Changing bundle ID to {0!r}'.format(bundle_id))
+    log().debug(f'Changing bundle ID to {bundle_id!r}')
     data['CFBundleIdentifier'] = bundle_id
     plistlib.writePlist(data, ip_path)
 
@@ -205,7 +203,7 @@ def notify(title='', text='', sound=None):
     if retcode == 0:
         return True
 
-    log().error('Notify.app exited with status {0}.'.format(retcode))
+    log().error(f'Notify.app exited with status {retcode}.')
     return False
 
 
@@ -222,7 +220,7 @@ def convert_image(inpath, outpath, size):
     """
     cmd = [
         b'sips',
-        b'-z', b'{0}'.format(size), b'{0}'.format(size),
+        b'-z', b'{}'.format(size), b'{}'.format(size),
         inpath,
         b'--out', outpath]
     # log().debug(cmd)
@@ -230,7 +228,7 @@ def convert_image(inpath, outpath, size):
         retcode = subprocess.call(cmd, stdout=pipe, stderr=subprocess.STDOUT)
 
     if retcode != 0:
-        raise RuntimeError('sips exited with {0}'.format(retcode))
+        raise RuntimeError(f'sips exited with {retcode}')
 
 
 def png_to_icns(png_path, icns_path):
@@ -253,7 +251,7 @@ def png_to_icns(png_path, icns_path):
         iconset = os.path.join(tempdir, 'Icon.iconset')
 
         assert not os.path.exists(iconset), (
-            "Iconset path already exists : {0!r}".format(iconset))
+            f"Iconset path already exists : {iconset!r}")
         os.makedirs(iconset)
 
         # Copy source icon to icon set and generate all the other
@@ -261,7 +259,7 @@ def png_to_icns(png_path, icns_path):
         configs = []
         for i in (16, 32, 128, 256, 512):
             configs.append(('icon_{0}x{0}.png'.format(i), i))
-            configs.append((('icon_{0}x{0}@2x.png'.format(i), i*2)))
+            configs.append(('icon_{0}x{0}@2x.png'.format(i), i*2))
 
         shutil.copy(png_path, os.path.join(iconset, 'icon_256x256.png'))
         shutil.copy(png_path, os.path.join(iconset, 'icon_128x128@2x.png'))
@@ -280,10 +278,10 @@ def png_to_icns(png_path, icns_path):
 
         retcode = subprocess.call(cmd)
         if retcode != 0:
-            raise RuntimeError("iconset exited with {0}".format(retcode))
+            raise RuntimeError(f"iconset exited with {retcode}")
 
         assert os.path.exists(icns_path), (
-            "Generated ICNS file not found : {0!r}".format(icns_path))
+            f"Generated ICNS file not found : {icns_path!r}")
     finally:
         try:
             shutil.rmtree(tempdir)
@@ -357,14 +355,14 @@ if __name__ == '__main__':  # pragma: nocover
     if o.png:
         icns = os.path.join(
             os.path.dirname(o.png),
-            b'{0}{1}'.format(os.path.splitext(os.path.basename(o.png))[0],
+            b'{}{}'.format(os.path.splitext(os.path.basename(o.png))[0],
                              '.icns'))
 
-        print('Converting {0!r} to {1!r} ...'.format(o.png, icns),
+        print(f'Converting {o.png!r} to {icns!r} ...',
               file=sys.stderr)
 
         assert not os.path.exists(icns), (
-            "Destination file already exists : {0}".format(icns))
+            f"Destination file already exists : {icns}")
 
         png_to_icns(o.png, icns)
         sys.exit(0)
