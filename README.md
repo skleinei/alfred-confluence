@@ -44,41 +44,50 @@ Quicksearch for Alfred*, because only the orginial version will be upgraded.
 
 In general, make sure to look at the output of *Confluence Quicksearch for Alfred*. When there is an error it will report `Error in Confluence Quicksearch` along with some details. Try to match that output with the errors mentioned below.
 
-If that doesn't help hit `⌘C` to copy the error message in the clipboard and post a question in the Github Discussions.
+If that doesn't help hit `⌘C` to copy the error message in the clipboard and post a question in the [Discussion Forum](https://www.alfredforum.com/topic/10234-atlassian-confluence-quick-search/).
 
-### HTTPSConnectionPool / Response 404
+### Common Errors
 
 <details><summary>HTTPSConnectionPool(host='...</summary>
+````
 HTTPSConnectionPool(host='amce.atlassian.com', port=443): Max retries exceeded with url: /wiki/rest/api/search?cql=title+~+%22c%22+AND+type+IN+%28page%2Cblogpost%29&limit=10&expand=content.space%2Ccontent.metadata.properties.emoji_title_published%2Ccontent.history.lastUpdated (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x10199e6a0>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known'))
-</details>
-
-<details><summary>Response 404 (</summary>
-Response 404 ({"errorMessage": "Site temporarily unavailable"})
-</details>
+````
 
 If you get an error like that, make sure you have configured the correct URL.
 
 **Tipps:**
 - Make sure it is ending with `atlassian.net` (and not `atlassian.com`) or `jira.com`
 - Make sure to **not** include `/wiki` at the end of the URL
-
-
-### Response 401
-
-<details><summary>Response 401 ({"message":"Request rejected because issuer is either not authorized</summary>
-Response 401 ({"message":"Request rejected because issuer is either not authorized or not authorized to impersonate","status-code":401})
 </details>
 
-If you get an error like that, make sure you have configured the correct Atlassian API token.
+<details><summary>Response 404 (...</summary>
+````
+Response 404 ({"errorMessage": "Site temporarily unavailable"})
+````
+If you get an error like that, make sure you have configured the correct URL.
 
-<details><summary>Response 401 (Basic authentication with passwords is deprecated.</summary>
+**Tipps:**
+- Make sure it is ending with `atlassian.net` (and not `atlassian.com`) or `jira.com`
+- Make sure to **not** include `/wiki` at the end of the URL
+</details>
+
+<details><summary>Response 401 ({"message":"Request rejected because issuer is either not authorized...</summary>
+````
+Response 401 ({"message":"Request rejected because issuer is either not authorized or not authorized to impersonate","status-code":401})
+````
+
+If you get an error like that, make sure you have configured the correct Atlassian API token.
+</details>
+
+
+<details><summary>Response 401 (Basic authentication with passwords is deprecated...</summary>
 Response 401 (Basic authentication with passwords is deprecated.  For more information, see: https://developer.atlassian.com/cloud/confluence/deprecation-notice-basic-auth/
-)</details>
 
 If you get an error like that, make sure you have configured the correct email.
+)</details>
 
 
-## Feedback, Issues & Questions
+### Other issues and questions
 
 Please raise any feedback issues and questions here: 
 https://www.alfredforum.com/topic/10234-atlassian-confluence-quick-search/
