@@ -6,6 +6,14 @@
 *Confluence Quicksearch for Alfred* allows you to search, open, and edit Confluence content from 
 Alfred. Just hit type `c <search term>` to search for Confluence.
 
+## Features
+
+- Super simple configuration thanks to the new Workflow User Configuration in Alfred 5.
+- Limit to search to single spaces by adding `-s <spacekey>` to the search terms
+- Limit to search to content types by adding `-t <contentTypes>` to the search terms (<contenttypes> is a comma-separated list of `page`, `blogpost`, `attachment`, e.g. `page,attachment`)
+- Copy Confluence page URL with `⌘C`
+- Authentication via API token
+
 
 ## Getting Started
 
