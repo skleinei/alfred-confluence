@@ -1,4 +1,4 @@
-![Confluence Quicksearch for Alfred](https://github.com/skleinei/alfred-confluence/raw/main/design/banner.png)
+![Confluence Quicksearch for Alfred](https://github.com/skleinei/alfred-confluence/raw/main/src/assets/banner.png)
 
 
 # Confluence Quicksearch for Alfred
