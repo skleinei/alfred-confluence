@@ -90,7 +90,7 @@ Response 401 (Basic authentication with passwords is deprecated.  For more infor
 ````
 
 If you get an error like that, make sure you have configured the correct email.
-)</details>
+</details>
 
 
 ### Other issues and questions
