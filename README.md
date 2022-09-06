@@ -8,10 +8,12 @@ Alfred. Just hit type `c <search term>` to search for Confluence.
 
 ## Features
 
-- Super simple configuration thanks to the new Workflow User Configuration in Alfred 5.
+- Super simple configuration thanks to the new [Workflow User Configuration](https://www.alfredapp.com/alfred-5-whats-new/) in Alfred 5.
 - Limit to search to single spaces by adding `-s <spacekey>` to the search terms
 - Limit to search to content types by adding `-t <contentTypes>` to the search terms (<contenttypes> is a comma-separated list of `page`, `blogpost`, `attachment`, e.g. `page,attachment`)
+- Directly edit pages when selecting a search result with `⌘Enter`
 - Copy Confluence page URL with `⌘C`
+- Displays page emojis 🥳
 - Authentication via API token
 
 

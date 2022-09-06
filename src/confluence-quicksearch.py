@@ -2,6 +2,7 @@ import argparse
 import ast
 import base64
 import json
+import re
 import requests
 import sys
 import urllib
@@ -29,13 +30,17 @@ def parseArgs():
     args = parser.parse_args()
     
     args.textAsString = " ".join(args.text)
+    args.pathPrefix = ""
+    if re.search("atlassian.net", args.url) or re.search("jira.com", args.url):
+        args.pathPrefix = "/wiki"
+
     return args
 
 
 def searchConfluence(args):
     response = requests.request(
         "GET",
-        args.url + '/wiki/rest/api/search',
+        args.url + args.pathPrefix + '/rest/api/search',
         headers = {
             "Accept": "application/json",
             "Authorization": createAuth(args)
@@ -98,7 +103,7 @@ def convertToAlfredItems(searchResults, args):
         alfredItems.append({
             "title": "No search results",
             "subtitle": "Hit <enter> to do a full-text search for '" + args.textAsString + "' in Confluence",
-            "arg": args.url + "/wiki/search?text=" + urllib.parse.quote(args.textAsString),
+            "arg": args.url + args.pathPrefix + "/search?text=" + urllib.parse.quote(args.textAsString),
             "icon": {
                 "path": "./assets/search-for.png"
             },
@@ -145,7 +150,7 @@ def createSubtitle(result, args):
 
 
 def createUrl(result, args):
-    return args.url + '/wiki' + result["url"]
+    return args.url + args.pathPrefix + result["url"]
 
 
 def getIconPath(result, args):
@@ -162,7 +167,7 @@ def getMods(result, args):
     if result["content"]["type"] == "blogpost" or result["content"]["type"] == "page":
         mod["cmd"] = {
             "valid": True,
-            "arg": args.url + '/wiki' + result["content"]["_links"]["editui"],
+            "arg": args.url + args.pathPrefix + result["content"]["_links"]["editui"],
             "subtitle": "Open in editor"
         }
 
@@ -175,7 +180,7 @@ def convertToTextResult(searchResults, args):
     if len(searchResults) < 1:
         textResult += "No search results found\n"
         textResult += "    Search Confluence for '" + args.textAsString + "':\n"
-        textResult += "    " + args.url + "/wiki/search?text=" + urllib.parse.quote(args.textAsString)
+        textResult += "    " + args.url + args.pathPrefix + "/search?text=" + urllib.parse.quote(args.textAsString)
 
     for result in searchResults:
         textResult += "· " + createTitle(result, args) + "\n"
