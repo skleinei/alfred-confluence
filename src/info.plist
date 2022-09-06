@@ -4,6 +4,8 @@
 <dict>
 	<key>bundleid</key>
 	<string>com.k15t.labs.alfredapp.confluence.quicksearch</string>
+	<key>category</key>
+	<string>Productivity</string>
 	<key>connections</key>
 	<dict>
 		<key>93941C10-A469-4465-9639-F6CC438E7DB0</key>
