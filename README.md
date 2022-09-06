@@ -15,10 +15,10 @@ In order to get started:
    [Github releases page](https://github.com/skleinei/alfred-confluence/releases).
 2. Double click the downloaded file to install the workflow in Alfred.
 3. In the workflow configuration:
-   * **Atlassian URL** - enter the Confluence Base URL, e.g. https://amce.atlassian.net (if you 
+   * **URL** - enter the Confluence Base URL, e.g. https://amce.atlassian.net (if you 
      have a really old Atlassian URL it could also be something like https://amce.jira.com)
    * **Email** - enter the email adress of your Atlassian ID account
-   * **Token** - enter an API token for Confluence. (Generate it here: 
+   * **API Token** - enter an API token for Confluence. (Generate it here: 
      https://id.atlassian.com/manage/api-tokens)
 
 To search for Confluence content, open Alfred with `⌘Space` and enter `c <search term>`.
@@ -34,7 +34,11 @@ for Alfred* supports in a straight forward way, bu duplicating the workflow in A
 
 To search in a second Confluence instance:
 1. Right-click the Confluence Quicksearch workflow and **Duplicate**.
-1. Click **Configure Workflow** and change the URL in the configuration.
+2. Click **Configure Workflow** and change the URL in the configuration.
+3. Double click the Script Filter element and change the keyword from `c` to something else like `co`.
+
+To search for content in the other Confluence system, you can then enter `co <search term>`.
+
 
 Please note that you have to re-do this, everytime when you install a new version of *Confluence 
 Quicksearch for Alfred*, because only the orginial version will be upgraded.

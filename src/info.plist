@@ -114,18 +114,16 @@ The *Confluence Quicksearch* workflow let's you search, open, and edit Confluenc
 
 ## Getting Started
 
-You are almost there.
+You are almost there. To complete the installation:
 
-### To complete the installation:
-1. Enter the following details (on the right side of this window):
-	- **URL** of your Atlassian cloud instance, for example: https://amce.atlassian.net
-	- **Email** used in your Atlassian account
-	- **Atlassian API token**, which you can get in your [Atlassian ID account](https://id.atlassian.com/manage/api-tokens)
+1. In the workflow configuration (on the right side):
+   * **URL** - enter the URL of your Atlassian Cloud, e.g. https://amce.atlassian.net (if you have a really old Atlassian URL it could also be something like https://amce.jira.com)
+   * **Email** - enter the email adress of your Atlassian ID account
+   * **API Token** - enter an API token for Confluence. (Generate it here: https://id.atlassian.com/manage/api-tokens)
 2. Click **Import**.
 
-### After that you are ready to go:
-1. Launch Alfred with `⌘ Space` (or however you have Alfred's keyboard shortcut configured)
-2. Enter `c search term`
+To search for Confluence content, open Alfred with `⌘Space` and enter `c search term`.
+
 
 ## More Information
 
@@ -207,7 +205,7 @@ Get more information and latest releases on https://github.com/skleinei/alfred-c
 			<key>description</key>
 			<string>Generate at: https://id.atlassian.com/manage/api-tokens</string>
 			<key>label</key>
-			<string>Atlassian API Token</string>
+			<string>API Token</string>
 			<key>type</key>
 			<string>textfield</string>
 			<key>variable</key>
