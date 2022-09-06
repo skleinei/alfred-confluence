@@ -1,5 +1,5 @@
 all:
-	rm -f build/alfred-confluence.alfredworkflow
+	rm -f build/confluence-quicksearch.alfredworkflow
 	mkdir -p build
-	cd src && zip -qR alfred-confluence.alfredworkflow "*"
-	mv src/alfred-confluence.alfredworkflow build
+	cd src && zip -qR confluence-quicksearch.alfredworkflow "*"
+	mv src/confluence-quicksearch.alfredworkflow build

@@ -4,93 +4,13 @@
 <dict>
 	<key>bundleid</key>
 	<string>com.k15t.labs.alfredapp.confluence.quicksearch</string>
-	<key>category</key>
-	<string>Productivity</string>
 	<key>connections</key>
 	<dict>
-		<key>66694B83-77C2-4BB3-B6EF-6485808CF637</key>
+		<key>93941C10-A469-4465-9639-F6CC438E7DB0</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>A0C2A9E0-EEE5-46AF-8D97-3139E48C236C</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>8A0D26F0-1878-4798-BDAD-AFE4590A6E99</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>8E1CCBB0-8E8B-43E8-9CAD-F78ED1C9D699</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>8B5B5E21-933E-45EE-83BC-C2B54261AE6C</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>AD677B12-B107-42B1-81AE-93BC364B4268</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>A0C2A9E0-EEE5-46AF-8D97-3139E48C236C</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>36A37924-7B29-454A-8249-B9286C6D099C</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>A2DC6BC9-B251-462D-9A27-0B7F5696237C</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>247E206B-9C9B-48C7-9764-CBC72266BAF5</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>C915FF15-748B-47DC-9483-A57DCF3F00DC</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>8B5B5E21-933E-45EE-83BC-C2B54261AE6C</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>FFD6C7ED-EA8E-457A-B303-B217A92A4C5D</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>8A0D26F0-1878-4798-BDAD-AFE4590A6E99</string>
+				<string>CDA15A26-51DA-464A-8AFC-8739279E9DD4</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -101,13 +21,13 @@
 		</array>
 	</dict>
 	<key>createdby</key>
-	<string>K15t Software GmbH</string>
+	<string>K15t</string>
 	<key>description</key>
-	<string>Search for Confluence content and open it.</string>
+	<string>Search, open, and edit Confluence content directly from Alfred.</string>
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
-	<string>Confluence Quick Search v1.0.3</string>
+	<string>Confluence Quicksearch v2.0.0</string>
 	<key>objects</key>
 	<array>
 		<dict>
@@ -115,17 +35,19 @@
 			<dict>
 				<key>browser</key>
 				<string></string>
+				<key>skipqueryencode</key>
+				<false/>
+				<key>skipvarencode</key>
+				<false/>
 				<key>spaces</key>
 				<string></string>
 				<key>url</key>
 				<string>{query}</string>
-				<key>utf8</key>
-				<true/>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.action.openurl</string>
 			<key>uid</key>
-			<string>247E206B-9C9B-48C7-9764-CBC72266BAF5</string>
+			<string>CDA15A26-51DA-464A-8AFC-8739279E9DD4</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -134,6 +56,12 @@
 			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<true/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
 				<key>argumenttype</key>
 				<integer>0</integer>
 				<key>escaping</key>
@@ -145,337 +73,149 @@
 				<key>queuedelayimmediatelyinitially</key>
 				<true/>
 				<key>queuedelaymode</key>
-				<integer>1</integer>
+				<integer>0</integer>
 				<key>queuemode</key>
 				<integer>2</integer>
 				<key>runningsubtext</key>
-				<string>Searching...</string>
+				<string>Searching Confluence…</string>
 				<key>script</key>
-				<string>python alfred-confluence.py "{query}"</string>
+				<string>PYTHONPATH=./lib python3 ./confluence-quicksearch.py {query} --url $URL --user $USER --token $TOKEN --output alfred</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
 				<string></string>
 				<key>subtext</key>
-				<string>Search for Confluence Pages</string>
+				<string>Enter search text…</string>
 				<key>title</key>
-				<string>Confluence Quick Search</string>
+				<string>Confluence Search</string>
 				<key>type</key>
-				<integer>0</integer>
+				<integer>5</integer>
 				<key>withspace</key>
 				<true/>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
-			<string>A2DC6BC9-B251-462D-9A27-0B7F5696237C</string>
+			<string>93941C10-A469-4465-9639-F6CC438E7DB0</string>
 			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argumenttype</key>
-				<integer>0</integer>
-				<key>keyword</key>
-				<string>confluence_baseurl</string>
-				<key>subtext</key>
-				<string>E.g. confluence_baseurl https://acme.atlassian.net/wiki</string>
-				<key>text</key>
-				<string>Set Confluence Base URL</string>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.keyword</string>
-			<key>uid</key>
-			<string>FFD6C7ED-EA8E-457A-B303-B217A92A4C5D</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>lastpathcomponent</key>
-				<false/>
-				<key>onlyshowifquerypopulated</key>
-				<false/>
-				<key>removeextension</key>
-				<false/>
-				<key>text</key>
-				<string>{query}</string>
-				<key>title</key>
-				<string>Confluence Base URL set.</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.notification</string>
-			<key>uid</key>
-			<string>8E1CCBB0-8E8B-43E8-9CAD-F78ED1C9D699</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>python alfred-confluence.py --baseUrl "{query}"</string>
-				<key>scriptargtype</key>
-				<integer>0</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>8A0D26F0-1878-4798-BDAD-AFE4590A6E99</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>lastpathcomponent</key>
-				<false/>
-				<key>onlyshowifquerypopulated</key>
-				<false/>
-				<key>removeextension</key>
-				<false/>
-				<key>text</key>
-				<string>{query}</string>
-				<key>title</key>
-				<string>Confluence Username set.</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.notification</string>
-			<key>uid</key>
-			<string>AD677B12-B107-42B1-81AE-93BC364B4268</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>python alfred-confluence.py --username "{query}"</string>
-				<key>scriptargtype</key>
-				<integer>0</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>8B5B5E21-933E-45EE-83BC-C2B54261AE6C</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argumenttype</key>
-				<integer>0</integer>
-				<key>keyword</key>
-				<string>confluence_username</string>
-				<key>subtext</key>
-				<string>E.g. confluence_username stefan</string>
-				<key>text</key>
-				<string>Set Confluence Username</string>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.keyword</string>
-			<key>uid</key>
-			<string>C915FF15-748B-47DC-9483-A57DCF3F00DC</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>python alfred-confluence.py --password "{query}"</string>
-				<key>scriptargtype</key>
-				<integer>0</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>A0C2A9E0-EEE5-46AF-8D97-3139E48C236C</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>lastpathcomponent</key>
-				<false/>
-				<key>onlyshowifquerypopulated</key>
-				<false/>
-				<key>removeextension</key>
-				<false/>
-				<key>text</key>
-				<string>Your password is stored safely in macOS keychain.</string>
-				<key>title</key>
-				<string>Confluence Password set.</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.notification</string>
-			<key>uid</key>
-			<string>36A37924-7B29-454A-8249-B9286C6D099C</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argumenttype</key>
-				<integer>0</integer>
-				<key>keyword</key>
-				<string>confluence_password</string>
-				<key>subtext</key>
-				<string>E.g. confluence_password ******</string>
-				<key>text</key>
-				<string>Set Confluence Password</string>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.keyword</string>
-			<key>uid</key>
-			<string>66694B83-77C2-4BB3-B6EF-6485808CF637</string>
-			<key>version</key>
-			<integer>1</integer>
+			<integer>3</integer>
 		</dict>
 	</array>
 	<key>readme</key>
-	<string>Alfred Confluence Workflow
+	<string>![Confluence Quicksearch for Alfred](./assets/banner.png)
 
-The Alfred Confluence workflow makes the Confluence Quick search available in the Alfred App.
+# 
 
-Just hit `⌘ Space` and type `c Employee Records` to search for Confluence page. 
+# Confluence Quicksearch
 
+The *Confluence Quicksearch* workflow let's you search, open, and edit Confluence content right from Alfred.
 
----
+## Getting Started
 
-The Alfred Confluence workflow was build by Stefan Kleineikenscheidt 
-(@skleinei). 
+You are almost there.
 
----
+### To complete the installation:
+1. Enter the following details (on the right side of this window):
+	- **URL** of your Atlassian cloud instance, for example: https://amce.atlassian.net
+	- **Email** used in your Atlassian account
+	- **Atlassian API token**, which you can get in your [Atlassian ID account](https://id.atlassian.com/manage/api-tokens)
+2. Click **Import**.
 
-This workflow is licensed under the MIT License.
+### After that you are ready to go:
+1. Launch Alfred with `⌘ Space` (or however you have Alfred's keyboard shortcut configured)
+2. Enter `c search term`
 
+## More Information
 
-MIT License
-
-Copyright (c) 2017 K15t Software
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</string>
+Get more information and latest releases on https://github.com/skleinei/alfred-confluence
+</string>
 	<key>uidata</key>
 	<dict>
-		<key>247E206B-9C9B-48C7-9764-CBC72266BAF5</key>
+		<key>93941C10-A469-4465-9639-F6CC438E7DB0</key>
 		<dict>
 			<key>xpos</key>
-			<integer>180</integer>
+			<real>30</real>
 			<key>ypos</key>
-			<integer>20</integer>
+			<real>15</real>
 		</dict>
-		<key>36A37924-7B29-454A-8249-B9286C6D099C</key>
+		<key>CDA15A26-51DA-464A-8AFC-8739279E9DD4</key>
 		<dict>
 			<key>xpos</key>
-			<integer>330</integer>
+			<real>245</real>
 			<key>ypos</key>
-			<integer>380</integer>
-		</dict>
-		<key>66694B83-77C2-4BB3-B6EF-6485808CF637</key>
-		<dict>
-			<key>xpos</key>
-			<integer>30</integer>
-			<key>ypos</key>
-			<integer>380</integer>
-		</dict>
-		<key>8A0D26F0-1878-4798-BDAD-AFE4590A6E99</key>
-		<dict>
-			<key>xpos</key>
-			<integer>180</integer>
-			<key>ypos</key>
-			<integer>140</integer>
-		</dict>
-		<key>8B5B5E21-933E-45EE-83BC-C2B54261AE6C</key>
-		<dict>
-			<key>xpos</key>
-			<integer>180</integer>
-			<key>ypos</key>
-			<integer>260</integer>
-		</dict>
-		<key>8E1CCBB0-8E8B-43E8-9CAD-F78ED1C9D699</key>
-		<dict>
-			<key>xpos</key>
-			<integer>330</integer>
-			<key>ypos</key>
-			<integer>140</integer>
-		</dict>
-		<key>A0C2A9E0-EEE5-46AF-8D97-3139E48C236C</key>
-		<dict>
-			<key>xpos</key>
-			<integer>180</integer>
-			<key>ypos</key>
-			<integer>380</integer>
-		</dict>
-		<key>A2DC6BC9-B251-462D-9A27-0B7F5696237C</key>
-		<dict>
-			<key>xpos</key>
-			<integer>30</integer>
-			<key>ypos</key>
-			<integer>20</integer>
-		</dict>
-		<key>AD677B12-B107-42B1-81AE-93BC364B4268</key>
-		<dict>
-			<key>xpos</key>
-			<integer>330</integer>
-			<key>ypos</key>
-			<integer>260</integer>
-		</dict>
-		<key>C915FF15-748B-47DC-9483-A57DCF3F00DC</key>
-		<dict>
-			<key>xpos</key>
-			<integer>30</integer>
-			<key>ypos</key>
-			<integer>260</integer>
-		</dict>
-		<key>FFD6C7ED-EA8E-457A-B303-B217A92A4C5D</key>
-		<dict>
-			<key>xpos</key>
-			<integer>30</integer>
-			<key>ypos</key>
-			<integer>140</integer>
+			<real>15</real>
 		</dict>
 	</dict>
+	<key>userconfigurationconfig</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string></string>
+				<key>placeholder</key>
+				<string>https://amce.atlassian.net</string>
+				<key>required</key>
+				<true/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string>The URL of your Atlassian Cloud instance</string>
+			<key>label</key>
+			<string>URL</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>URL</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string></string>
+				<key>placeholder</key>
+				<string>name@example.com</string>
+				<key>required</key>
+				<true/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string>Email adress of your Atlassian ID account</string>
+			<key>label</key>
+			<string>Email</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>USER</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string></string>
+				<key>placeholder</key>
+				<string>rLXdeZ7leBFn5IjxYDFmvt45</string>
+				<key>required</key>
+				<true/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string>Generate at: https://id.atlassian.com/manage/api-tokens</string>
+			<key>label</key>
+			<string>Atlassian API Token</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>TOKEN</string>
+		</dict>
+	</array>
+	<key>variablesdontexport</key>
+	<array/>
 	<key>version</key>
-	<string>1.0.3</string>
+	<string>2.0.0</string>
 	<key>webaddress</key>
 	<string>https://www.k15t.com</string>
 </dict>
