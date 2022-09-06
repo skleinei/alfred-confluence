@@ -30,8 +30,11 @@ def parseArgs():
     args = parser.parse_args()
     
     args.textAsString = " ".join(args.text)
+
     args.pathPrefix = ""
+    args.isDatacenter = True
     if re.search("atlassian.net", args.url) or re.search("jira.com", args.url):
+        args.isDatacenter = False
         args.pathPrefix = "/wiki"
 
     return args
@@ -164,12 +167,20 @@ def getIconPath(result, args):
 def getMods(result, args):
     mod = {}
 
-    if result["content"]["type"] == "blogpost" or result["content"]["type"] == "page":
-        mod["cmd"] = {
-            "valid": True,
-            "arg": args.url + args.pathPrefix + result["content"]["_links"]["editui"],
-            "subtitle": "Open in editor"
-        }
+    if args.isDatacenter == True:
+        if result["content"]["type"] == "blogpost" or result["content"]["type"] == "page":
+            mod["cmd"] = {
+                "valid": True,
+                "arg": args.url + args.pathPrefix + "/pages/editpage.action?pageId=" + result["content"]["id"],
+                "subtitle": "Open in editor"
+            }
+    else:
+        if result["content"]["type"] == "blogpost" or result["content"]["type"] == "page":
+            mod["cmd"] = {
+                "valid": True,
+                "arg": args.url + args.pathPrefix + result["content"]["_links"]["editui"],
+                "subtitle": "Open in editor"
+            }
 
     return mod
 
