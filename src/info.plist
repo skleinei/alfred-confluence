@@ -161,7 +161,7 @@ Get more information and latest releases on https://github.com/skleinei/alfred-c
 				<true/>
 			</dict>
 			<key>description</key>
-			<string>The URL of your Atlassian Cloud instance</string>
+			<string>The URL of your Atlassian Cloud instance (in case of Confluence DataCenter/Server: Enter the Confluence URL)</string>
 			<key>label</key>
 			<string>URL</string>
 			<key>type</key>
@@ -182,7 +182,7 @@ Get more information and latest releases on https://github.com/skleinei/alfred-c
 				<true/>
 			</dict>
 			<key>description</key>
-			<string>Email adress of your Atlassian ID account</string>
+			<string>Email adress of your Atlassian ID account (in case of Confluence DataCenter/Server: Enter your Confluence username)</string>
 			<key>label</key>
 			<string>Email</string>
 			<key>type</key>
@@ -203,7 +203,7 @@ Get more information and latest releases on https://github.com/skleinei/alfred-c
 				<true/>
 			</dict>
 			<key>description</key>
-			<string>Generate at: https://id.atlassian.com/manage/api-tokens</string>
+			<string>Generate at: https://id.atlassian.com/manage/api-tokens (in case of Confluence DataCenter/Server: Enter your Confluence password)</string>
 			<key>label</key>
 			<string>API Token</string>
 			<key>type</key>
