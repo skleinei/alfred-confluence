@@ -29,7 +29,7 @@
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
-	<string>Confluence Quicksearch v2.0.1</string>
+	<string>Confluence Quicksearch v2.1.0-beta</string>
 	<key>objects</key>
 	<array>
 		<dict>
@@ -264,7 +264,7 @@ Get more information and latest releases on https://github.com/skleinei/alfred-c
 	<key>variablesdontexport</key>
 	<array/>
 	<key>version</key>
-	<string>2.0.1</string>
+	<string>2.1.0-beta</string>
 	<key>webaddress</key>
 	<string>https://www.k15t.com</string>
 </dict>
