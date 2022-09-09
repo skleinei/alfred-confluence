@@ -2,6 +2,7 @@ import argparse
 import ast
 import base64
 import json
+import os
 import re
 import requests
 import sys
@@ -18,9 +19,9 @@ def log(message, args):
 def parseArgs():
     parser = argparse.ArgumentParser()
     parser.add_argument("text", metavar='text', nargs='+')
-    parser.add_argument("--url", required=True, help="Specify the url. E.g. https://k15t.atlassian.net/ or https://k15t.jira.com/ (for really old cloud instances)")
-    parser.add_argument("--user", required=True, help="Specify the user's email")
-    parser.add_argument("--token", required=True, help="Specify the authentication token (generate one here: https://id.atlassian.com/manage/api-tokens)")
+    parser.add_argument("--url", help="Specify the url. E.g. https://k15t.atlassian.net/ or https://k15t.jira.com/ (for really old cloud instances)")
+    parser.add_argument("--user", help="Specify the user's email")
+    parser.add_argument("--token", help="Specify the authentication token (generate one here: https://id.atlassian.com/manage/api-tokens)")
     parser.add_argument("-o", "--output", default='cli', help="Specify output mode [alfred|cli].")
     parser.add_argument("-s", "--space", nargs="?", default=None, const=None, help="Specify the space key")
     parser.add_argument("-l", "--limit", default=10, help="Specify the max number of results")
@@ -31,13 +32,47 @@ def parseArgs():
     
     args.textAsString = " ".join(args.text)
 
+    args.url = getAndValidateUrl(args)
+    args.user = getAndValidateUser(args)
+    args.token = getAndValidateToken(args)
+
     args.pathPrefix = ""
     args.isDatacenter = True
     if re.search("atlassian.net", args.url) or re.search("jira.com", args.url):
         args.isDatacenter = False
         args.pathPrefix = "/wiki"
-
+    
     return args
+
+
+def getAndValidateUrl(args):
+    url = os.getenv("CA_URL", args.url)
+    log(url, args)
+
+    if url == None or len(url) <= 0:
+        raise Exception("URL not specified.")
+
+    return url
+
+
+def getAndValidateUser(args):
+    user = os.getenv("CA_USER", args.user)
+    log(user, args)
+
+    if user == None or len(user) <= 0:
+        raise Exception("User not specified.")
+
+    return user
+
+
+def getAndValidateToken(args):
+    token = os.getenv("CA_TOKEN", args.token)
+    log(token, args)
+
+    if token == None or len(token) <= 0:
+        raise Exception("Token not specified.")
+
+    return token
 
 
 def searchConfluence(args):

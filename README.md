@@ -8,6 +8,7 @@ Alfred. Just hit type `c <search term>` to search for Confluence.
 
 ## Features
 
+- Works with Confluence Cloud and Data Center/Server
 - Super simple configuration thanks to the new [Workflow User Configuration](https://www.alfredapp.com/alfred-5-whats-new/) in Alfred 5.
 - Limit to search to single spaces by adding `-s <spacekey>` to the search terms
 - Limit to search to content types by adding `-t <contentTypes>` to the search terms (<contenttypes> is a comma-separated list of `page`, `blogpost`, `attachment`, e.g. `page,attachment`)
@@ -26,10 +27,14 @@ In order to get started:
 2. Double click the downloaded file to install the workflow in Alfred.
 3. In the workflow configuration:
    * **URL** - enter the Confluence Base URL, e.g. https://amce.atlassian.net (if you 
-     have a really old Atlassian URL it could also be something like https://amce.jira.com)
-   * **Email** - enter the email adress of your Atlassian ID account
+     have a really old Atlassian URL it could also be something like https://amce.jira.com). 
+     If you are on Confluence Data Center/Server enter the URL of the Confluence system, 
+     e.g. https://confluence.example.com or https://apps.example.com/confluence.
+   * **Email** - enter the email adress of your Atlassian ID account. If you are on Confluence 
+   * Data Center/Server enter your Confluence username.
    * **API Token** - enter an API token for Confluence. (Generate it here: 
-     https://id.atlassian.com/manage/api-tokens)
+     https://id.atlassian.com/manage/api-tokens). If you are on Confluence Data Center/Server 
+     enter your Confluence password.
 
 To search for Confluence content, open Alfred with `⌘Space` and enter `c <search term>`.
 

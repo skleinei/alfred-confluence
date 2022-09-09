@@ -29,7 +29,7 @@
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
-	<string>Confluence Quicksearch v2.0.1-beta</string>
+	<string>Confluence Quicksearch v2.0.1</string>
 	<key>objects</key>
 	<array>
 		<dict>
@@ -81,7 +81,7 @@
 				<key>runningsubtext</key>
 				<string>Searching Confluence…</string>
 				<key>script</key>
-				<string>PYTHONPATH=./lib python3 ./confluence-quicksearch.py {query} --url $URL --user $USER --token $TOKEN --output alfred</string>
+				<string>PYTHONPATH=./lib python3 ./confluence-quicksearch.py {query} --output alfred</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
@@ -114,21 +114,13 @@ The *Confluence Quicksearch* workflow let's you search, open, and edit Confluenc
 
 ## Getting Started
 
-You are almost there. To complete the installation:
-
-1. In the workflow configuration (on the right side):
-   * **URL** - enter the URL of your Atlassian Cloud, e.g. https://amce.atlassian.net (if you have a really old Atlassian URL it could also be something like https://amce.jira.com)
-   * **Email** - enter the email adress of your Atlassian ID account
-   * **API Token** - enter an API token for Confluence. (Generate it here: https://id.atlassian.com/manage/api-tokens)
-2. Click **Import**.
+You are almost there: Fill out the URL, Email, and API Token (create here: https://id.atlassian.com/manage/api-tokens) on the right side and click **Import**.
 
 To search for Confluence content, open Alfred with `⌘Space` and enter `c search term`.
 
-
 ## More Information
 
-Get more information and latest releases on https://github.com/skleinei/alfred-confluence
-</string>
+Get more information and latest releases on https://github.com/skleinei/alfred-confluence</string>
 	<key>uidata</key>
 	<dict>
 		<key>93941C10-A469-4465-9639-F6CC438E7DB0</key>
@@ -161,13 +153,13 @@ Get more information and latest releases on https://github.com/skleinei/alfred-c
 				<true/>
 			</dict>
 			<key>description</key>
-			<string>The URL of your Atlassian Cloud instance (in case of Confluence DataCenter/Server: Enter the Confluence URL)</string>
+			<string>The URL of your Atlassian Cloud instance. (In case of Confluence Data Center/Server: Enter the Confluence URL)</string>
 			<key>label</key>
 			<string>URL</string>
 			<key>type</key>
 			<string>textfield</string>
 			<key>variable</key>
-			<string>URL</string>
+			<string>CA_URL</string>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -182,13 +174,13 @@ Get more information and latest releases on https://github.com/skleinei/alfred-c
 				<true/>
 			</dict>
 			<key>description</key>
-			<string>Email adress of your Atlassian ID account (in case of Confluence DataCenter/Server: Enter your Confluence username)</string>
+			<string>Email adress of your Atlassian ID account. (In case of Confluence Data Center/Server: Enter your Confluence username)</string>
 			<key>label</key>
 			<string>Email</string>
 			<key>type</key>
 			<string>textfield</string>
 			<key>variable</key>
-			<string>USER</string>
+			<string>CA_USER</string>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -203,19 +195,19 @@ Get more information and latest releases on https://github.com/skleinei/alfred-c
 				<true/>
 			</dict>
 			<key>description</key>
-			<string>Generate at: https://id.atlassian.com/manage/api-tokens (in case of Confluence DataCenter/Server: Enter your Confluence password)</string>
+			<string>Generate at: https://id.atlassian.com/manage/api-tokens. (In case of Confluence Data Center/Server: Enter your Confluence password)</string>
 			<key>label</key>
 			<string>API Token</string>
 			<key>type</key>
 			<string>textfield</string>
 			<key>variable</key>
-			<string>TOKEN</string>
+			<string>CA_TOKEN</string>
 		</dict>
 	</array>
 	<key>variablesdontexport</key>
 	<array/>
 	<key>version</key>
-	<string>2.0.1-beta</string>
+	<string>2.0.1</string>
 	<key>webaddress</key>
 	<string>https://www.k15t.com</string>
 </dict>
