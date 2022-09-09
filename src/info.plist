@@ -203,6 +203,63 @@ Get more information and latest releases on https://github.com/skleinei/alfred-c
 			<key>variable</key>
 			<string>CA_TOKEN</string>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<true/>
+				<key>required</key>
+				<false/>
+				<key>text</key>
+				<string>Page</string>
+			</dict>
+			<key>description</key>
+			<string></string>
+			<key>label</key>
+			<string>Content-Types</string>
+			<key>type</key>
+			<string>checkbox</string>
+			<key>variable</key>
+			<string>CA_CONTENT_TYPE_PAGE</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<true/>
+				<key>required</key>
+				<false/>
+				<key>text</key>
+				<string>Blog posts</string>
+			</dict>
+			<key>description</key>
+			<string></string>
+			<key>label</key>
+			<string></string>
+			<key>type</key>
+			<string>checkbox</string>
+			<key>variable</key>
+			<string>CA_CONTENT_TYPE_BLOGPOST</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<false/>
+				<key>required</key>
+				<false/>
+				<key>text</key>
+				<string>Attachments</string>
+			</dict>
+			<key>description</key>
+			<string>Select the content types that should be searched for.</string>
+			<key>label</key>
+			<string></string>
+			<key>type</key>
+			<string>checkbox</string>
+			<key>variable</key>
+			<string>CA_CONTENT_TYPE_ATTACHMENT</string>
+		</dict>
 	</array>
 	<key>variablesdontexport</key>
 	<array/>
