@@ -197,9 +197,9 @@ def convert_to_alfred_items(search_results, args):
 
 
 def create_title(result, args):
-    if "emoji-title-published" in result["content"]["metadata"]["properties"]:
+    try:
         emoji = chr(ast.literal_eval('0x'+ result["content"]["metadata"]["properties"]["emoji-title-published"]["value"])) + ' '
-    else:
+    except Exception:
         emoji = ''
 
     return "{1}{2}".format(
